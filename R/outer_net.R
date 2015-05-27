@@ -1,0 +1,57 @@
+#=========== outer_net ===============
+#' Select edges departing or arriving at a set of nodes
+#' 
+#' @description 
+#' This is a generic function for selecting network edges departing
+#' from or arriving at a specific nodes. This "outer" network can be contrasted 
+#' to an "inner" network which contains only edges connecting within a set of 
+#' nodes.
+#' 
+#' @seealso \link{outer_net}
+#' 
+#' @name outer_net
+#' @export
+#' 
+outer_net <- function(src, ...) UseMethod('outer_net', src)
+
+#' @param src An interaction network source (e.g. the result of \code{src_biogrid()}).
+#' @param genes Gene identifiers (i.e. nodes).
+#' @param org NCBI organism IDs used to filter BioGRID interactions. Defaults to 
+#' \code{organism('cerevisiae')}.
+#' @param ... other arguments passed to methods. For \code{src_biogrid} method, 
+#' additional arguments are passed to \link[dplyr]{filter}.
+#'
+#' @examples \dontrun{
+#' genes <- c('CTF4', 'TOF1')
+#' src_biogrid() %>% inner_net(genes)
+#' src_biogrid() %>% outer_net(genes)
+#' }
+#' 
+#' @rdname outer_net
+#' @importFrom dplyr %>% tbl filter collect
+#' @export
+#' 
+outer_net.src_biogrid <- function(src, genes, org = organism('cerevisiae'), ...) {
+  
+  # This is a hack to get around https://github.com/hadley/dplyr/issues/511
+  genes <- c(genes[1], genes)
+  org <- c(org[1], org)
+  
+  src %>% tbl('interactions') %>%
+    filter(
+      (a %in% genes |
+         a_systematic %in% genes |
+         a_entrezgene %in% genes |
+         a_biogrid %in% genes |
+         b %in% genes |
+         b_systematic %in% genes |
+         b_entrezgene %in% genes |
+         b_biogrid %in% genes),
+      (a_organism %in% org),
+      (b_organism %in% org),
+      ...) %>%
+    collect %>%
+    assign_class('tbl_biogrid_outer', 'tbl_biogrid', class(.)) %>%
+    assign_attr('genes', genes) %>%
+    assign_attr('organisms', org)
+}
