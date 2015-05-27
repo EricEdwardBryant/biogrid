@@ -1,0 +1,86 @@
+"ncbi_taxonomy_id","id"
+"Synechococcus elongatus PCC7942",1140
+"Chlamydomonas reinhardtii",3055
+"Physcomitrella patens",3218
+"Populus trichocarpa",3694
+"Arabidopsis thaliana",3702
+"Glycine max",3847
+"Ricinus communis",3988
+"Sorghum bicolor",4558
+"Zea mays",4577
+"Pneumocystis carinii",4754
+"Phytophthora infestans",4787
+"Schizosaccharomyces pombe",4896
+"Neurospora crassa",5141
+"Ustilago maydis",5270
+"Leishmania major",5664
+"Schistosoma mansoni",6183
+"Caenorhabditis briggsae",6238
+"Caenorhabditis elegans",6239
+"Lxodes scapularis",6945
+"Acyrthosiphon pisum",7029
+"Aedes aegypti",7159
+"Anopheles gambiae",7165
+"Culex quinquefasciatus",7176
+"Drosophila melanogaster",7227
+"Apis mellifera",7460
+"Strongylocentrotus purpuratus",7668
+"Danio rerio",7955
+"Xenopus laevis",8355
+"Gallus gallus",9031
+"Meleagris gallopavo",9103
+"Ornithorhynchus anatinus",9258
+"Callithrix jacchus",9483
+"Macaca mulatta",9544
+"Pan troglodytes",9598
+"Pongo abelii",9601
+"Homo sapiens",9606
+"Canis familiaris",9615
+"Ailuropoda melanoleuca",9646
+"Loxodonta africana",9785
+"Equus caballus",9796
+"Sus scrofa",9823
+"Bos taurus",9913
+"Oryctolagus cuniculus",9986
+"Cricetulus griseus",10029
+"Mus musculus",10090
+"Rattus norvegicus",10116
+"Cavia porcellus",10141
+"Trichoplax adhaerens",10228
+"Human Herpesvirus 1",10298
+"Human Herpesvirus 2",10310
+"Human Herpesvirus 3",10335
+"Human Herpesvirus 5",10359
+"Murid Herpesvirus 1",10366
+"Human Herpesvirus 6",10368
+"Human Herpesvirus 7",10372
+"Human Herpesvirus 4",10376
+"Hepatitus C Virus",11103
+"Human Immunodeficiency Virus 1",11676
+"Human Immunodeficiency Virus 2",11709
+"Monodelphis domestica",13616
+"Brachypodium distachyon",15368
+"Anolis carolinensis",28377
+"Takifugu rubripes",31033
+"Caenorhabditis remanei",31234
+"Plasmodium falciparum 3D7",36329
+"Oryza sativa",39947
+"Nematostella vectensis",45351
+"Simian-Human Immunodeficiency Virus",57667
+"Arabidopsis lyrata",59689
+"Taeniopygia guttata",59729
+"Nomascus leucogenys",61853
+"Selaginella moellendorffii",88036
+"Pediculus humanus",121225
+"Bacillus subtilis 168",224308
+"Aspergillus nidulans",227321
+"Candida albicans SC5314",237561
+"Myxococcus xanthus",246197
+"Mycoplasma pneumoniae M129",272634
+"Dictyostelium discoideum AX4",352472
+"Amphimedon queenslandica",400682
+"Campylobacter jejuni 81116",407148
+"Human Herpesvirus 8",435895
+"Escherichia coli",511145
+"Streptococcus pneumoniae TCH8431/19A",525381
+"Saccharomyces cerevisiae",559292
