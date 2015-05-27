@@ -1,0 +1,73 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{usage examples}
+-->
+
+Welcome to the biogrid package!
+================================
+
+This package contains a SQLite database of BioGRID interactions. This vignette 
+will demonstrate how to access this data.
+
+```{r}
+library(biogrid)
+
+# Connect to the local BioGRID database
+src_biogrid()
+```
+
+The database contains four tables:
+
+- `interactions`: Interaction data in an edge list structure
+- `log`: contains the BioGRID version number and download date
+- `organisms`: A mapping of organism names to NCBI identifiers
+- `systems`: Experimental systems (interaction classes) and their descriptions
+
+To access a table you can use the `tbl` function. Don't be scared by all those 
+`%>%`s (pronounced 'pipe')! Using `x %>% y` is equivalent to `f(x, y)` and just 
+makes the syntax easier to read as a procedure, or 'pipeline', instead of a 
+bunch of nested function calls, or a bunch of temporary variable assignments. 
+You can use `collect` when you want to get your query returned as a data.frame 
+(rather than a SQL query).
+
+```{r message=FALSE, eval = FALSE}
+# Some example genes of interest
+genes <- c('CTF4', 'TOF1', 'MRC1', 'CSM3', 'RAD17', 'MEC3', 'DDC1')
+yeast <- organism('cerevisiae')
+```
+
+```{r inner_net, eval = FALSE}
+# Inner network example
+example1 <-
+  src_biogrid() %>%
+  inner_net(genes, yeast) %>%
+  aggregate
+
+example1
+example1 %>% plot()
+example1 %>% plot('physical', bounds = c(-5,5), method = 'complete')
+```
+
+```{r outer_net, eval = FALSE}
+# Outer network example
+example2 <- 
+  src_biogrid() %>%
+  outer_net(genes, yeast) %>%
+  aggregate
+
+example2
+example2 %>% plot()
+```
+
+Advanced queries with `dplyr`
+---------------------------------
+
+```{r eval = FALSE}
+library(dplyr)
+example2 <- 
+  src_biogrid() %>%
+  filter() %>%
+  select() %>%
+  group_by() %>%
+  summarise()
+```
