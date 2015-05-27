@@ -1,0 +1,23 @@
+Package: biogrid
+Title: BioGRID Interaction Data
+Description: This package offers convenient access to physical and genetic interaction data stored in a local copy of the BioGRID database. Note, I (Eric Bryant) am not affiliated with BioGRID, and therefore the code in this package does not reflect standards of the BioGRID group.
+Version: 0.0.9000
+Authors@R: as.person(c("Eric Bryant <eeb2139@columbia.edu> [aut, cre]"))
+License: GPL-3
+URL: https://github.com/EricEdwardBryant/biogrid
+Depends: R (>= 3.1)
+Imports:
+    DBI (>= 0.3.1),
+    data.table,
+    dplyr (>= 0.4.1),
+    ggplot2 (>= 1.0.0),
+    RSQLite (>= 1.0.0),
+    stats (>= 3.1.2),
+    tidyr (>= 0.2.0),
+    utils (>= 3.1.2),
+    easydb
+VignetteBuilder: knitr
+Suggests:
+    devtools,
+    knitr,
+    roxygen2
