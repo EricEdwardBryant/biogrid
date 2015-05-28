@@ -10,7 +10,7 @@ This package is currently hosted on GitHub, so the easiest way to install the la
 ```{r eval = FALSE}
 if (!require(devtools)) install.packages('devtools')
 devtools::install_github('EricEdwardBryant/easydb')
-devtools::install_github('EricEdwardBryant/biogrid')
+devtools::install_github('EricEdwardBryant/biogridr')
 ```
 
 ## Using an archived version of BioGRID
@@ -18,24 +18,24 @@ devtools::install_github('EricEdwardBryant/biogrid')
 If you want to use an archived version BioGRID you can specify the URL to the archive of interest using the `url` argument (use a link to the `tab2` format). BioGRID download URLs can be found [here](http://thebiogrid.org/download.php).
 
 ```{r eval = FALSE}
-library(biogrid)
+library(biogridr)
 url <- paste0('http://thebiogrid.org/downloads/archives/Release%20Archive/',
               'BIOGRID-3.2.99/BIOGRID-ALL-3.2.99.tab2.zip')
-update_biogrid(url = url)
+update_biogridr(url = url)
 ```
 
-If you want to save the interactions to a different local database (e.g. in your project's directory for use in your reproducible analysis), you can specify a path to this database with the `db` argument. By convention this path should end in `.sqlite`. In the example below, if `data/example.sqlite` does not exist, the biogrid package's database will be copied to this file, and interaction data will subsequently be downloaded and written to this new database.
+If you want to save the interactions to a different local database (e.g. in your project's directory for use in your reproducible analysis), you can specify a path to this database with the `db` argument. By convention this path should end in `.sqlite`. In the example below, if `data/example.sqlite` does not exist, the biogridr package's database will be copied to this file, and interaction data will subsequently be downloaded and written to this new database.
 
 ```{r eval = FALSE}
 # The path is relative to the current working directory
-update_biogrid(db = 'data/example.sqlite')
+update_biogridr(db = 'data/example.sqlite')
 ```
 
-To use this database by default, you may want to set the `biogrid.db` global option to point to your new database.
+To use this database by default, you may want to set the `biogridr.db` global option to point to your new database.
 
 ```{r eval = FALSE}
-options(biogrid.db = 'data/example.sqlite')
-src_biogrid()
+options(biogridr.db = 'data/example.sqlite')
+src_biogridr()
 ```
 
 ## Why isn't the data just included in the package?

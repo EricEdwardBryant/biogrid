@@ -1,4 +1,4 @@
-#============ update_biogrid Documentation ========================
+#============ update_biogridr Documentation ========================
 #' Update Local BioGRID Database
 #' 
 #' @description
@@ -6,14 +6,14 @@
 #' previously archived versions of the BioGRID database.
 #' 
 #' @param url URL to BIOGRID-ALL-<VERSION>.tab2.zip archive. Defaults to 
-#' \code{getOption('biogrid.url')}.
+#' \code{getOption('biogridr.url')}.
 #' @param db Path to an SQLite database. Defaults to 
-#' \code{getOption('biogrid.db')}.
+#' \code{getOption('biogridr.db')}.
 #' 
 #' @details
 #' This function downloads a BIOGRID-ALL-<VERSION>.tab2.zip to a temporary file,
-#' which is then written to an SQLite database. The default biogrid url 
-#' (\code{getOption('biogrid.url')}) is the latest release.
+#' which is then written to an SQLite database. The default biogridr url 
+#' (\code{getOption('biogridr.url')}) is the latest release.
 #' 
 #' @importFrom dplyr %>% rename_
 #' @importFrom data.table fread
@@ -22,11 +22,11 @@
 #' @importFrom utils unzip
 #' @export
 #' 
-update_biogrid <- function(
-  db = getOption('biogrid.db'), 
-  url = getOption('biogrid.url')) {
+update_biogridr <- function(
+  db = getOption('biogridr.db'), 
+  url = getOption('biogridr.url')) {
   
-  packagedb <- system.file('extdata/biogrid.sqlite', package = 'biogrid')
+  packagedb <- system.file('extdata/biogridr.sqlite', package = 'biogridr')
   
   # If creating a new database make a copy of the package's database
   if (db != packagedb & !file.exists(db)) file.copy(packagedb, db)
@@ -86,7 +86,7 @@ update_biogrid <- function(
 }
 
 
-#============ initialize_biogrid Documentation ========================
+#============ initialize_biogridr Documentation ========================
 #' Initialize Local BioGRID Database
 #' 
 #' @description
@@ -94,16 +94,16 @@ update_biogrid <- function(
 #' previously archived versions of the BioGRID database.
 #' 
 #' @param url URL to BIOGRID-ALL-<VERSION>.tab2.zip archive. Defaults to 
-#' \code{getOption('biogrid.url')}.
+#' \code{getOption('biogridr.url')}.
 #' @param db Path to an SQLite database. Defaults to 
-#' \code{getOption('biogrid.db')}.
+#' \code{getOption('biogridr.db')}.
 #' 
 #' @details
 #' If the local BioGRID database has not been initialized, this function will
-#' run \link{update_biogrid} which downloads a BIOGRID-ALL-<VERSION>.tab2.zip 
+#' run \link{update_biogridr} which downloads a BIOGRID-ALL-<VERSION>.tab2.zip 
 #' to a temporary file, which is then written to an SQLite database.
 #' 
-#' @seealso \link{update_biogrid}
+#' @seealso \link{update_biogridr}
 #' 
 #' @importFrom dplyr %>% rename_ src_sqlite
 #' @importFrom RSQLite SQLite
@@ -111,10 +111,10 @@ update_biogrid <- function(
 #' @importFrom utils unzip
 #' @export
 #' 
-initialize_biogrid <- function(db = getOption('biogrid.db'), 
-                               url = getOption('biogrid.url')) {
+initialize_biogridr <- function(db = getOption('biogridr.db'), 
+                               url = getOption('biogridr.url')) {
   src <- src_sqlite(db)
   
-  if (!('interactions' %in% dbListTables(src$con))) update_biogrid(db, url)
+  if (!('interactions' %in% dbListTables(src$con))) update_biogridr(db, url)
   return(invisible(TRUE))
 }

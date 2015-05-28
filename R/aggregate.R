@@ -5,7 +5,7 @@
 #' Aggregates BioGRID interaction data based on several categories. 
 #' For more information see Details.
 #' 
-#' @param x An object of class \code{tbl_biogrid} (i.e. interaction data derived 
+#' @param x An object of class \code{tbl_biogridr} (i.e. interaction data derived 
 #' from the 'interactions' table in your local BioGRID database).
 #' @param neg Character vector of interaction system names that correspond to 
 #' negative interactions (e.g. 'Negative Genetic').
@@ -41,7 +41,7 @@
 #' \code{B_perturbation <-neg/pos-> A_perturbation}.
 #' 
 #' @examples \dontrun{
-#' src_biogrid() %>%
+#' src_biogridr() %>%
 #'   outer_net('CTF4') %>%
 #'   aggregate
 #' }
@@ -52,7 +52,7 @@
 #' arrange collect
 #' @export
 #' 
-aggregate.tbl_biogrid <- function(x, neg = NULL, pos = NULL, phy = NULL, und = NULL) {
+aggregate.tbl_biogridr <- function(x, neg = NULL, pos = NULL, phy = NULL, und = NULL) {
   
   if (inherits(x, 'tbl_sqlite')) x <- collect(x)
   
@@ -100,7 +100,7 @@ aggregate.tbl_biogrid <- function(x, neg = NULL, pos = NULL, phy = NULL, und = N
     arrange(a, score, b) 
   
   out %>%
-    assign_class('tbl_biogrid_aggregated', 'tbl_df', 'tbl', 'data.frame') %>%
+    assign_class('tbl_biogridr_aggregated', 'tbl_df', 'tbl', 'data.frame') %>%
     assign_attr('net', 'custom') %>%
     assign_attr('group_definitions', list(undirected = und, negative = neg, 
                                           positive = pos, physical = phy, 
@@ -108,7 +108,7 @@ aggregate.tbl_biogrid <- function(x, neg = NULL, pos = NULL, phy = NULL, und = N
 }
 
 #' @export
-aggregate.tbl_biogrid_outer <- function(x, ...) {
+aggregate.tbl_biogridr_outer <- function(x, ...) {
   
   agg <- x %>%
     drop_class() %>%
@@ -123,7 +123,7 @@ aggregate.tbl_biogrid_outer <- function(x, ...) {
 }
 
 #' @export
-aggregate.tbl_biogrid_inner <- function(x, ...) {
+aggregate.tbl_biogridr_inner <- function(x, ...) {
   
   agg <- x %>%
     drop_class() %>%

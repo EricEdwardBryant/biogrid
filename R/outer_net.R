@@ -14,24 +14,24 @@
 #' 
 outer_net <- function(src, ...) UseMethod('outer_net', src)
 
-#' @param src An interaction network source (e.g. the result of \code{src_biogrid()}).
+#' @param src An interaction network source (e.g. the result of \code{src_biogridr()}).
 #' @param genes Gene identifiers (i.e. nodes).
 #' @param org NCBI organism IDs used to filter BioGRID interactions. Defaults to 
 #' \code{organism('cerevisiae')}.
-#' @param ... other arguments passed to methods. For \code{src_biogrid} method, 
+#' @param ... other arguments passed to methods. For \code{src_biogridr} method, 
 #' additional arguments are passed to \link[dplyr]{filter}.
 #'
 #' @examples \dontrun{
 #' genes <- c('CTF4', 'TOF1')
-#' src_biogrid() %>% inner_net(genes)
-#' src_biogrid() %>% outer_net(genes)
+#' src_biogridr() %>% inner_net(genes)
+#' src_biogridr() %>% outer_net(genes)
 #' }
 #' 
 #' @rdname outer_net
 #' @importFrom dplyr %>% tbl filter collect
 #' @export
 #' 
-outer_net.src_biogrid <- function(src, genes, org = organism('cerevisiae'), ...) {
+outer_net.src_biogridr <- function(src, genes, org = organism('cerevisiae'), ...) {
   
   # This is a hack to get around https://github.com/hadley/dplyr/issues/511
   genes <- c(genes[1], genes)
@@ -51,7 +51,7 @@ outer_net.src_biogrid <- function(src, genes, org = organism('cerevisiae'), ...)
       (b_organism %in% org),
       ...) %>%
     collect %>%
-    assign_class('tbl_biogrid_outer', 'tbl_biogrid', class(.)) %>%
+    assign_class('tbl_biogridr_outer', 'tbl_biogridr', class(.)) %>%
     assign_attr('genes', genes) %>%
     assign_attr('organisms', org)
 }

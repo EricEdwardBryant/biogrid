@@ -17,7 +17,7 @@
 #' @export
 #' 
 organism <- function(x, ...) {
-  suppressWarnings(src_biogrid()) %>%
+  suppressWarnings(src_biogridr()) %>%
     tbl('organisms') %>%
     collect %>%
     filter(grepl(x, organism, ...)) %>%

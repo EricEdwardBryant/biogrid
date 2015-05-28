@@ -2,17 +2,18 @@
 % Please edit documentation in R/outer_net.R
 \name{outer_net}
 \alias{outer_net}
-\alias{outer_net.src_biogrid}
+\alias{outer_net.src_biogridr}
 \title{Select edges departing or arriving at a set of nodes}
 \usage{
 outer_net(src, ...)
 
-\method{outer_net}{src_biogrid}(src, genes, org = organism("cerevisiae"), ...)
+\method{outer_net}{src_biogridr}(src, genes, org = organism("cerevisiae"),
+  ...)
 }
 \arguments{
-\item{src}{An interaction network source (e.g. the result of \code{src_biogrid()}).}
+\item{src}{An interaction network source (e.g. the result of \code{src_biogridr()}).}
 
-\item{...}{other arguments passed to methods. For \code{src_biogrid} method,
+\item{...}{other arguments passed to methods. For \code{src_biogridr} method,
 additional arguments are passed to \link[dplyr]{filter}.}
 
 \item{genes}{Gene identifiers (i.e. nodes).}
@@ -29,8 +30,8 @@ nodes.
 \examples{
 \dontrun{
 genes <- c('CTF4', 'TOF1')
-src_biogrid() \%>\% inner_net(genes)
-src_biogrid() \%>\% outer_net(genes)
+src_biogridr() \%>\% inner_net(genes)
+src_biogridr() \%>\% outer_net(genes)
 }
 }
 \seealso{

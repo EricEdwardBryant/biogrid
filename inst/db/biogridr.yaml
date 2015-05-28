@@ -1,7 +1,7 @@
-name: biogrid.sqlite
+name: biogridr.sqlite
 
 update:
-  interactions: biogrid:::update_biogrid()
+  interactions: biogridr:::update_biogridr()
   
 table:
   organisms: organisms.csv

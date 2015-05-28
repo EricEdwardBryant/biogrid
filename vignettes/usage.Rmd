@@ -3,17 +3,17 @@
 %\VignetteIndexEntry{usage examples}
 -->
 
-Welcome to the biogrid package!
+Welcome to the biogridr package!
 ================================
 
 This package contains a SQLite database of BioGRID interactions. This vignette 
 will demonstrate how to access this data.
 
 ```{r}
-library(biogrid)
+library(biogridr)
 
 # Connect to the local BioGRID database
-src_biogrid()
+src_biogridr()
 ```
 
 The database contains four tables:
@@ -39,7 +39,7 @@ yeast <- organism('cerevisiae')
 ```{r inner_net, eval = FALSE}
 # Inner network example
 example1 <-
-  src_biogrid() %>%
+  src_biogridr() %>%
   inner_net(genes, yeast) %>%
   aggregate
 
@@ -51,7 +51,7 @@ example1 %>% plot('physical', bounds = c(-5,5), method = 'complete')
 ```{r outer_net, eval = FALSE}
 # Outer network example
 example2 <- 
-  src_biogrid() %>%
+  src_biogridr() %>%
   outer_net(genes, yeast) %>%
   aggregate
 
@@ -65,7 +65,7 @@ Advanced queries with `dplyr`
 ```{r eval = FALSE}
 library(dplyr)
 example2 <- 
-  src_biogrid() %>%
+  src_biogridr() %>%
   filter() %>%
   select() %>%
   group_by() %>%
