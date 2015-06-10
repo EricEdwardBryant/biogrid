@@ -21,5 +21,5 @@ organism <- function(x, ...) {
     tbl('organisms') %>%
     collect %>%
     filter(grepl(x, organism, ...)) %>%
-    .[['id']]
+    .[['ncbi_taxonomy_id']]
 }
