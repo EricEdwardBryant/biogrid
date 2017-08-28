@@ -100,7 +100,7 @@ aggregate.tbl_biogridr <- function(x, neg = NULL, pos = NULL, phy = NULL, und = 
     arrange(a, score, b) 
   
   out %>%
-    assign_class('tbl_biogridr_aggregated', 'tbl_df', 'tbl', 'data.frame') %>%
+    add_class('tbl_biogridr_aggregated') %>%
     assign_attr('net', 'custom') %>%
     assign_attr('group_definitions', list(undirected = und, negative = neg, 
                                           positive = pos, physical = phy, 
@@ -110,13 +110,10 @@ aggregate.tbl_biogridr <- function(x, neg = NULL, pos = NULL, phy = NULL, und = 
 #' @export
 aggregate.tbl_biogridr_outer <- function(x, ...) {
   
-  agg <- x %>%
+  x %>%
     drop_class() %>%
-    aggregate(...)
-  
-  agg %>%
+    aggregate(...) %>%
     filter(a %in% attr(x, 'genes')) %>%
-    assign_class(class(agg)) %>%
     assign_attr('group_definitions', attr(agg, 'group_definitions')) %>%
     assign_attr('net', 'outer') %>%
     assign_attr('genes', attr(x, 'genes'))
@@ -125,7 +122,7 @@ aggregate.tbl_biogridr_outer <- function(x, ...) {
 #' @export
 aggregate.tbl_biogridr_inner <- function(x, ...) {
   
-  agg <- x %>%
+  x %>%
     drop_class() %>%
     aggregate(...) %>%
     assign_attr('net', 'inner') %>%

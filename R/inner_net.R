@@ -50,7 +50,8 @@ inner_net.src_biogridr <- function(src, genes, org = organism('cerevisiae'), ...
       (b_organism %in% org),
       ...) %>%
     collect %>%
-    assign_class('tbl_biogridr_inner', 'tbl_biogridr', class(.)) %>%
+    add_class('tbl_biogridr') %>%
+    add_class('tbl_biogridr_inner') %>%
     assign_attr('genes', genes) %>%
     assign_attr('organisms', org)
 }
