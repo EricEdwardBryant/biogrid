@@ -23,4 +23,3 @@ This function downloads a BIOGRID-ALL-<VERSION>.tab2.zip to a temporary file,
 which is then written to an SQLite database. The default biogridr url 
 (\code{getOption('biogridr.url')}) is the latest release.
 }
-
