@@ -27,4 +27,3 @@ matrix based on \link[stats]{hclust}.
 Given a numeric matrix, or data frame, sort rows and/or 
 columns based on correlation distance heirarchical clustering.
 }
-

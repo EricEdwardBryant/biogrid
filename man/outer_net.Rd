@@ -38,4 +38,3 @@ src_biogridr() \%>\% outer_net(genes)
 \seealso{
 \link{outer_net}
 }
-

@@ -23,4 +23,3 @@ Defaults to 3.}
 \description{
 Plot a clustered heatmap of aggregated biogrid interactions.
 }
-

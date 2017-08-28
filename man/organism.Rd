@@ -22,4 +22,3 @@ organism('cerevisiae')
 }
 
 }
-

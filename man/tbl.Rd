@@ -7,4 +7,3 @@
 This is a generic exported directly from \link[dplyr]{dplyr} 
 (see \link[dplyr]{tbl}).
 }
-

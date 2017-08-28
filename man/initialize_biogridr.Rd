@@ -26,4 +26,3 @@ to a temporary file, which is then written to an SQLite database.
 \seealso{
 \link{update_biogridr}
 }
-

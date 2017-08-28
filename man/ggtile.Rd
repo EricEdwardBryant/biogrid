@@ -22,4 +22,3 @@ Convenience function for plotting a numeric matrix as colored
 tiles using ggplot with row and column order preserved. Combine with 
 \link{cluster} for a clustered heatmap.
 }
-
