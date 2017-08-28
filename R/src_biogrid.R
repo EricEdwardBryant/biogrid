@@ -53,7 +53,7 @@
 #' @name src_biogridr
 #' @aliases biogridr
 #' @importFrom dplyr %>%
-#' @importFrom DBI dbConnect dbGetInfo dbGetQuery
+#' @importFrom DBI dbConnect dbGetQuery
 #' @importFrom RSQLite SQLite initExtension
 #' @export
 #' 
@@ -73,7 +73,7 @@ src_biogridr <- function(path = getOption('biogridr.db')) {
             'BioGRID interaction data.',
             call. = FALSE)
   }
-  list(con = con, path = path, release = release, info = dbGetInfo(con)) %>%
+  list(con = con, path = path, release = release) %>%
     add_class('src_biogridr')
 }
 
