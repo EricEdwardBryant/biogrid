@@ -21,33 +21,29 @@
 #' update_biogridr()
 #' 
 #' # Connect to the database
-#' src_biogridr()
+#' db <- src_biogridr()
 #' 
 #' # Query the database for a CTF4 outer network 
-#' src_biogridr() %>%
-#'   outer_net('CTF4')
+#' outer_net(db, 'CTF4')
 #' 
 #' # Aggregate the CTF4 outer network
-#' src_biogridr() %>%
-#'   outer_net('CTF4') %>%
-#'   aggregate
+#' aggregate(outer_net('CTF4'))
 #' 
 #' # Use dplyr to make custom queries to the database
 #' library(dplyr)
-#' src_biogridr() %>%
-#'   tbl('systems')
-#'   
-#' src_biogridr() %>%
-#'   tbl('organisms')
+#' tbl(db, 'systems')
+#' tbl(db, 'organisms')
 #' 
 #' genes <- c('TOF1', 'CTF4')
-#' src_biogridr() %>%
-#'   tbl('interactions') %>%
+#' organism <- organism('cerevisiae')
+#' tbl(db, 'interactions') %>%
 #'   filter(
-#'     (a %in% genes | b %in% genes),
-#'      a_organism == organism('cerevisiae'),
-#'      b_organism == organism('cerevisiae')) %>%
-#'   select(a, b)
+#'     (a %in% genes | b %in% genes) &
+#'      a_organism == organism &
+#'      b_organism == organism
+#'   ) %>%
+#'   select(a, b) %>%
+#'   collect()
 #' }
 #' 
 #' @name src_biogridr
